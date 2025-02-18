@@ -1,3 +1,6 @@
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getEventById } from "../data/eventData";
 import EventBanner from "../components/EventDetails/EventBanner";
 import EventCoordinators from "../components/EventDetails/EventCoordinators";
 import EventSchedule from "../components/EventDetails/EventSchedule";
@@ -6,13 +9,40 @@ import Guidelines from "../components/EventDetails/Guidelines";
 import PrizesRewards from "../components/EventDetails/PrizesRewards";
 import QuickInfo from "../components/EventDetails/QuickInfo";
 import SponsorsSection from "../components/EventDetails/SponsorsSection";
+import { File, ExternalLink } from "lucide-react";
+
+// Map icon strings to Lucide components for resources section
+const iconMap = {
+  File: File,
+  ExternalLink: ExternalLink
+};
 
 function EventDetails() {
+  const { id } = useParams();
+  const [event, setEvent] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // In a real app, you might fetch from an API here
+    // For now, we're using our local getEventById function
+    const eventData = getEventById(Number(id) || 1); // Default to first event if no ID
+    setEvent(eventData);
+    setLoading(false);
+  }, [id]);
+
+  if (loading) {
+    return <div className="container mx-auto px-4 py-8">Loading...</div>;
+  }
+
+  if (!event) {
+    return <div className="container mx-auto px-4 py-8">Event not found</div>;
+  }
+
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Banner Section - Full Width */}
       <div className="mb-10">
-        <EventBanner />
+        <EventBanner event={event} />
       </div>
       
       <div className="max-w-5xl mx-auto">
@@ -23,37 +53,33 @@ function EventDetails() {
             <div className="prose max-w-none bg-white p-6 rounded-lg shadow-sm">
               <h2 className="text-2xl font-bold mb-4 text-gray-900 border-b pb-2">Event Overview</h2>
               <p className="text-gray-700 leading-relaxed">
-                Code Odyssey is CIMDR's flagship software development
-                competition that brings together the brightest minds from
-                colleges across India. Participants will tackle real-world
-                problems through innovative software solutions, competing for
-                prestigious awards and recognition in the tech community.
+                {event.description}
               </p>
             </div>
             
             {/* Schedule Section */}
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <EventSchedule />
+              <EventSchedule event={event} />
             </div>
             
             {/* Guidelines Section */}
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <Guidelines />
+              <Guidelines event={event} />
             </div>
             
             {/* FAQs Section */}
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <FAQs />
+              <FAQs event={event} />
             </div>
 
-            {/* FAQs Section */}
+            {/* Prizes Section */}
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <PrizesRewards />
+              <PrizesRewards event={event} />
             </div>
 
-             {/* FAQs Section */}
-             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <SponsorsSection />
+            {/* Sponsors Section */}
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <SponsorsSection event={event} />
             </div>
           </div>
           
@@ -61,12 +87,12 @@ function EventDetails() {
           <div className="md:col-span-1 space-y-6 h-fit sticky top-10 self-start">
             {/* Quick Info Card */}
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <QuickInfo />
+              <QuickInfo event={event} />
             </div>
             
             {/* Event Coordinators Card */}
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <EventCoordinators />
+              <EventCoordinators event={event} />
             </div>
             
             {/* Registration Button */}
@@ -80,27 +106,25 @@ function EventDetails() {
             </div>
             
             {/* Additional Resources - Optional */}
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-lg font-semibold mb-4 text-gray-900">Resources</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="#" className="text-blue-600 hover:underline flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                    </svg>
-                    Contest Rules PDF
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-blue-600 hover:underline flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    Last Year Winners
-                  </a>
-                </li>
-              </ul>
-            </div>
+            {event.resources && (
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-lg font-semibold mb-4 text-gray-900">Resources</h3>
+                <ul className="space-y-2">
+                  {event.resources.map((resource, index) => {
+                    const IconComponent = iconMap[resource.icon];
+                    
+                    return (
+                      <li key={index}>
+                        <a href={resource.url} className="text-blue-600 hover:underline flex items-center">
+                          {IconComponent && <IconComponent className="h-4 w-4 mr-2" />}
+                          {resource.name}
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>

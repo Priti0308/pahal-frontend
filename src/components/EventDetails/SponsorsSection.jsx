@@ -1,34 +1,8 @@
 import React from "react";
-import logo from "../../assets/logo.png";
 
-const sponsors = [
-  {
-    name: "Platinum Sponsor",
-    image: logo
-  },
-  {
-    name: "Gold Sponsor",
-    image: logo,
-  },
-  {
-    name: "Gold Sponsor",
-    image: logo,
-  },
-  {
-    name: "Silver Sponsor",
-    image: logo,
-  },
-  {
-    name: "Silver Sponsor",
-    image: logo,
-  },
-  {
-    name: "Silver Sponsor",
-    image: logo,
-  },
-];
+const SponsorsSection = ({ event }) => {
+  if (!event || !event.sponsors) return null;
 
-const SponsorsSection = () => {
   return (
     <div className="max-w-5xl mx-auto px-6 py-12">
       {/* Section Heading */}
@@ -37,7 +11,7 @@ const SponsorsSection = () => {
       {/* Sponsors Container */}
       <div className="bg-white p-6 rounded-lg shadow-md border">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center text-center">
-          {sponsors.map((sponsor, index) => (
+          {event.sponsors.map((sponsor, index) => (
             <div key={index} className="flex flex-col items-center">
               <img
                 src={sponsor.image}
