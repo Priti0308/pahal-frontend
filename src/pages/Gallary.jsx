@@ -1,9 +1,32 @@
-import FeaturedEvent from "../components/gallary/FeaturedEvent";
+import React, { useState } from "react";
+
 import FilterButtons from "../components/gallary/FilterButton";
 import GalleryGrid from "../components/gallary/GalleryGrid";
 import StatsSection from "../components/gallary/StatSection";
-
+import { competitions } from "../data/competitionData";
+const getUniqueValues = (key) => {
+  return [...new Set(competitions.map((comp) => comp[key]))];
+};
 function Gallery() {
+  const [activeFilters, setActiveFilters] = useState({});
+
+  const filters = [
+    {
+      id: "years",
+      label: "All Years",
+      options: getUniqueValues("year"),
+    },
+    {
+      id: "categories",
+      label: "All Categories",
+      options: getUniqueValues("category"),
+    },
+    {
+      id: "types",
+      label: "All Competition Types",
+      options: getUniqueValues("type"),
+    },
+  ];
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl">
       <header className="text-center mb-8">
@@ -23,16 +46,15 @@ function Gallery() {
         </div>
       </header>
 
-      <StatsSection />
-      <FilterButtons />
-      <GalleryGrid />
-      <FeaturedEvent />
+      <FilterButtons
+        filters={filters}
+        activeFilters={activeFilters}
+        setActiveFilters={setActiveFilters}
+      />
 
-      <div className="text-center mt-8">
-        <button className="px-6 py-2 border border-black text-black rounded-full hover:bg-gray-100">
-          Load More
-        </button>
-      </div>
+      <StatsSection activeFilters={activeFilters} />
+
+      <GalleryGrid activeFilters={activeFilters} />
     </div>
   );
 }

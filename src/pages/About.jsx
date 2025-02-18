@@ -178,7 +178,7 @@ const AboutUs = () => {
       </section>
 
       {/* Competition Categories */}
-      <section className="py-20 px-4 bg-primary-900 text-white">
+      <section className="py-20 px-4 bg-primary-900 ">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4">Our Competition Categories</h2>
@@ -350,27 +350,6 @@ const AboutUs = () => {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* Join Us CTA */}
-      <section className="py-20 px-4 bg-primary-800 text-white text-center">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to be Part of Pahal 2024?</h2>
-          <p className="text-xl text-primary-100 mb-10 max-w-2xl mx-auto">
-            Join thousands of students nationwide in India's premier intercollegiate competition. Challenge yourself, showcase your talents, and connect with future innovators and leaders.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-white text-primary-800 py-3 px-8 rounded-lg font-semibold hover:bg-primary-50 transition-colors">
-              Register Now
-            </button>
-            <button className="border border-white text-white py-3 px-8 rounded-lg font-semibold hover:bg-primary-700 transition-colors">
-              Learn More
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 px-4">
       </section>
 
      </div>
