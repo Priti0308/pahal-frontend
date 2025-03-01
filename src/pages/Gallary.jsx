@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Link } from 'react-router-dom';
 import FilterButtons from "../components/gallary/FilterButton";
 import GalleryGrid from "../components/gallary/GalleryGrid";
 import StatsSection from "../components/gallary/StatSection";
@@ -37,15 +37,14 @@ function Gallery() {
           and soft skills events.
         </p>
         <div className="flex gap-4 justify-center mt-6">
-          <button className="px-6 py-2 bg-black text-white rounded-full hover:bg-gray-800">
-            Register Now
-          </button>
+        <Link to="/register" className="px-6 py-2 bg-black text-white rounded-full hover:bg-gray-800">Register Now</Link>
+
           <button className="px-6 py-2 border border-black text-black rounded-full hover:bg-gray-100">
             View Schedule
           </button>
         </div>
       </header>
-
+      
       <FilterButtons
         filters={filters}
         activeFilters={activeFilters}

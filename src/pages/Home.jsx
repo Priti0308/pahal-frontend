@@ -17,6 +17,7 @@ function Home() {
       <PrizesRecognitionSection />
       <PastEventsWinnersSection />
     </>
+
   );
 }
 

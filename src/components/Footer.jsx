@@ -58,7 +58,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="text-center text-gray-400">
-          <p>© 2024 Pahal - CIMDR. All rights reserved.</p>
+          <p>© 2025 Pahal - CIMDR. All rights reserved.</p>
         </div>
       </div>
     </footer>

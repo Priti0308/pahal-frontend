@@ -26,11 +26,11 @@ const Header = () => {
         
         {/* Register Button */}
         <Link 
-          to="/register" 
-          className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition duration-200"
+          to="/register"className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition duration-200"
         >
           Register Now
         </Link>
+        
       </div>
       
       {/* Colored Band at Bottom */}
