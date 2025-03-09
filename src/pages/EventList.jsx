@@ -55,12 +55,13 @@ function EventList() {
 
                 {/* Register Button */}
                 <div className="mt-auto">
-                  <button 
+              <a href=""><button 
                     onClick={() => handleRegisterClick(event.id)}
                     className="w-full py-2 bg-black text-white rounded hover:bg-gray-800 transition duration-300"
                   >
                     Register Now
-                  </button>
+                  </button></a>
+
                 </div>
               </div>
             </div>

@@ -7,7 +7,6 @@ import EventList from "./pages/EventList";
 import Gallery from "./pages/Gallary";
 import Home from "./pages/Home";
 import AboutUs from "./pages/About";
-import ContactUs from "./pages/ContactUs";
 import RegistrationForm from "./pages/RegistrationForm";
 
 // Admin Components
@@ -16,45 +15,32 @@ import Dashboard from "./components/adminDashboard/Dashboard";
 import EventManagement from "./components/adminDashboard/EventManagement";
 import UserManagement from "./components/adminDashboard/UserManagement";
 import Settings from "./components/adminDashboard/Settings";
-import AdminRoute from "./components/adminDashboard/AdminRoute"; // Authentication Wrapper
+
 
 function App() {
   return (
     <Router>
-      <Header />
-
+      <Header/>
       <Routes>
         {/* 🌍 Public Routes */}
-        <Route path="/" element={<Home />} />
+       <Route path="/" element={<Home />} /> 
+        {/* <Route path="/" element={< Dashboard/>} /> */}
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/events" element={<EventList />} />
         <Route path="/about" element={<AboutUs />} />
-        <Route path="/contact" element={<ContactUs />} />
+        {/* <Route path="/contact" element={<ContactUs />} /> */}
         <Route path="/events/:id" element={<EventDetails />} />
         <Route path="/register" element={<RegistrationForm />} />
-        <Route path="/admin/dashboard" element={<Dashboard />} />
-        <Route path="/admin/events" element={<EventManagement />} />
-        <Route path="/admin/users" element={<UserManagement />} />
-        <Route path="/admin/settings" element={<Settings />} />
-        <Route path="/admin/events" element={<Dashboard />} />
 
-        {/* 🔒 Protected Admin Routes */}
-        {/* <Route
-          path="/admin/"
-          element={
-            <AdminRoute>
-              <AdminLayout>
-                <Routes>
-                  <Route path="dashboard" element={<Dashboard />} />
-                  
-                </Routes>
-              </AdminLayout>
-            </AdminRoute>
-          }
-        /> */}
+        {/* 🔐 Admin Routes - Wrapped with Admin Layout */}
+        <Route path="admin" element={<AdminLayout />}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="events" element={<EventManagement />} />
+          <Route path="users" element={<UserManagement />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
       </Routes>
-
-      <Footer />
+      <Footer/>
     </Router>
   );
 }

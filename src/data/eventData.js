@@ -10,9 +10,9 @@ import robotics from "../assets/logo.png";
 export const eventsData = [
   {
     id: 1,
-    title: "Code Odyssey",
+    title: "Pahal: Idea Peaching Event",
     emoji: "🚀",
-    category: "Software Development",
+    category: "Business Idea",
     date: "March 15-17, 2024",
     time: "9:00 AM - 6:00 PM",
     location: "CIMDR Campus, Sangli",
@@ -140,7 +140,7 @@ export const eventsData = [
   },
   {
     id: 2,
-    title: "AI Summit 2024",
+    title: "Add-Mad Show",
     emoji: "🤖",
     category: "Artificial Intelligence",
     date: "April 10-12, 2024",
@@ -258,7 +258,7 @@ export const eventsData = [
   },
   {
     id: 3,
-    title: "Creative Arts Exhibition",
+    title: "Code-A-Thon",
     emoji: "🎨",
     category: "Fine Arts",
     date: "May 5-10, 2024",
@@ -376,7 +376,7 @@ export const eventsData = [
   },
   {
     id: 4,
-    title: "Sports Championship",
+    title: "Virtual Trading",
     emoji: "🏆",
     category: "Athletics",
     date: "June 12-20, 2024",
@@ -494,7 +494,7 @@ export const eventsData = [
   },
   {
     id: 5,
-    title: "Cultural Festival",
+    title: "Captura",
     emoji: "🎭",
     category: "Performing Arts",
     date: "July 5-7, 2024",
@@ -612,7 +612,7 @@ export const eventsData = [
   },
   {
     id: 6,
-    title: "Robotics Challenge",
+    title: "Quize",
     emoji: "🤖",
     category: "Engineering",
     date: "August 18-20, 2024",
@@ -733,7 +733,7 @@ export const eventsData = [
 export const listEvents = [
   {
     id: 1,
-    title: "Code Odyssey",
+    title: "Pahal: Idea Peaching Event",
     category: "Software Development",
     date: "March 15-17, 2024",
     description: "CIMDR's flagship software development competition that brings together the brightest minds from colleges across India.",
@@ -747,7 +747,7 @@ export const listEvents = [
    
   {
     id: 2,
-    title: "AI Summit 2024",
+    title: "Add-Mad_Show",
     category: "Artificial Intelligence",
     date: "April 10-12, 2024",
     description: "A cutting-edge conference bringing together AI researchers, practitioners, and enthusiasts to discuss the latest advancements.",
@@ -760,7 +760,7 @@ export const listEvents = [
   },
   {
     id: 3,
-    title: "Creative Arts Exhibition",
+    title: "Code-A-Thon(1st time)",
     category: "Fine Arts",
     date: "May 5-10, 2024",
     description: "A week-long celebration of visual arts showcasing the talent of emerging and established artists from across the region.",
@@ -773,7 +773,7 @@ export const listEvents = [
   },
   {
     id: 4,
-    title: "Sports Championship",
+    title: "Virtual Trading",
     category: "Athletics",
     date: "June 12-20, 2024",
     description: "A comprehensive multi-sport championship featuring competitions in cricket, football, basketball, athletics, and more.",
@@ -786,7 +786,7 @@ export const listEvents = [
   },
   {
     id: 5,
-    title: "Cultural Festival",
+    title: "Captura",
     category: "Performing Arts",
     date: "July 5-7, 2024",
     description: "A vibrant celebration of cultural diversity featuring music, dance, drama, and other performing arts.",
@@ -799,7 +799,7 @@ export const listEvents = [
   },
   {
     id: 6,
-    title: "Robotics Challenge",
+    title: "Quize",
     category: "Engineering",
     date: "August 18-20, 2024",
     description: "An intensive robotics competition challenging teams to design, build, and program robots to complete specific tasks.",

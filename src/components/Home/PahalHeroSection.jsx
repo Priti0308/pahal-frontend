@@ -32,9 +32,15 @@ const PahalHeroSection = () => {
           
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4">
-            <button className="px-8 py-3 bg-white text-black font-semibold rounded hover:bg-gray-200 transition duration-300">
+            {/* <button className="px-8 py-3 bg-white text-black font-semibold rounded hover:bg-gray-200 transition duration-300">
               Register Now
-            </button>
+            </button> */
+            <a href="/register"><button className="px-8 py-3 bg-white text-black font-semibold rounded hover:bg-gray-200 transition duration-300">
+                    Register Now
+                  </button></a>
+            
+            
+            }
             <button className="px-8 py-3 bg-transparent text-white font-semibold border border-white rounded hover:bg-white/10 transition duration-300">
               Learn More
             </button>

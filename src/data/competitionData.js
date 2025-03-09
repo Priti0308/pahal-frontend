@@ -2,7 +2,7 @@
 export const competitions = [
     {
       id: 1,
-      title: "Inter-College Debate Competition",
+      title: "Knowledge Knockout",
       year: "2024",
       category: "Academic",
       type: "Team",
@@ -12,7 +12,7 @@ export const competitions = [
     },
     {
       id: 2,
-      title: "National Hackathon",
+      title: "Portfolio Olympics",
       year: "2024",
       category: "Technology",
       type: "Team",
@@ -22,7 +22,7 @@ export const competitions = [
     },
     {
       id: 3,
-      title: "Business Plan Competition",
+      title: "Sales Guru",
       year: "2023",
       category: "Business",
       type: "Individual",
@@ -32,7 +32,7 @@ export const competitions = [
     },
     {
       id: 4,
-      title: "Annual Sports Meet",
+      title: "Dance -O- Mania",
       year: "2023",
       category: "Sports",
       type: "Individual",
@@ -42,7 +42,7 @@ export const competitions = [
     },
     {
       id: 5,
-      title: "Cultural Arts Festival",
+      title: "Captura",
       year: "2022",
       category: "Arts",
       type: "Individual",
@@ -52,7 +52,7 @@ export const competitions = [
     },
     {
       id: 6,
-      title: "Robotics Challenge",
+      title: "Add-Mad-Show",
       year: "2022",
       category: "Technology",
       type: "Team",
@@ -62,7 +62,7 @@ export const competitions = [
     },
     {
       id: 7,
-      title: "Science Exhibition",
+      title: "Blind Coding",
       year: "2021",
       category: "Academic",
       type: "Team",
@@ -72,7 +72,7 @@ export const competitions = [
     },
     {
       id: 8,
-      title: "International Chess Tournament",
+      title: "One Minute Game",
       year: "2021",
       category: "Sports",
       type: "Individual",
@@ -82,7 +82,7 @@ export const competitions = [
     },
     {
       id: 9,
-      title: "Music Competition",
+      title: "Treasure Hunt",
       year: "2020",
       category: "Arts",
       type: "Individual",

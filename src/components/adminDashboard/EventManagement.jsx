@@ -1,72 +1,142 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 
-const EventManagement = () => {
-  const [events, setEvents] = useState([]);
-  const [form, setForm] = useState({ title: "", description: "", date: "", location: "" });
-  const [editId, setEditId] = useState(null);
-
-  useEffect(() => {
-    fetchEvents();
-  }, []);
-
-  const fetchEvents = async () => {
-    const { data } = await axios.get("http://localhost:5000/api/events");
-    setEvents(data);
-  };
+const EventManagement = ({ addEvent }) => {
+  const [eventData, setEventData] = useState({
+    title: "",
+    date: "",
+    location: "",
+    description: "",
+    organizer: "",
+    category: "Conference",
+    ticketPrice: "Free",
+    maxParticipants: "",
+    banner: null,
+  });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setEventData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleFileChange = (e) => {
+    setEventData((prev) => ({ ...prev, banner: e.target.files[0] }));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (editId) {
-      await axios.put(`http://localhost:5000/api/events/${editId}`, form);
-    } else {
-      await axios.post("http://localhost:5000/api/events", form);
-    }
-    setForm({ title: "", description: "", date: "", location: "" });
-    setEditId(null);
-    fetchEvents();
-  };
-
-  const handleEdit = (event) => {
-    setEditId(event._id);
-    setForm(event);
-  };
-
-  const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/events/${id}`);
-    fetchEvents();
+    addEvent(eventData);
+    setEventData({
+      title: "",
+      date: "",
+      location: "",
+      description: "",
+      organizer: "",
+      category: "Conference",
+      ticketPrice: "Free",
+      maxParticipants: "",
+      banner: null,
+    });
   };
 
   return (
-    <div className="p-6 bg-white rounded shadow">
-      <h2 className="text-2xl font-bold mb-4">Event Management</h2>
-
-      {/* Form */}
-      <form onSubmit={handleSubmit} className="mb-4 p-4 bg-gray-100 rounded">
-        <input name="title" value={form.title} onChange={handleChange} placeholder="Event Title" className="w-full p-2 border mb-2" required />
-        <textarea name="description" value={form.description} onChange={handleChange} placeholder="Event Description" className="w-full p-2 border mb-2" required></textarea>
-        <input name="date" type="date" value={form.date} onChange={handleChange} className="w-full p-2 border mb-2" required />
-        <input name="location" value={form.location} onChange={handleChange} placeholder="Event Location" className="w-full p-2 border mb-2" required />
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2">{editId ? "Update" : "Create"} Event</button>
+    <div className="p-6 bg-white rounded-lg shadow-md">
+      <h2 className="text-xl font-semibold mb-4">Add New Event</h2>
+      <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
+        <input
+          type="text"
+          name="title"
+          value={eventData.title}
+          onChange={handleChange}
+          placeholder="Event Title"
+          className="border p-2 rounded"
+          required
+        />
+        <input
+          type="date"
+          name="date"
+          value={eventData.date}
+          onChange={handleChange}
+          className="border p-2 rounded"
+          required
+        />
+        <input
+          type="text"
+          name="location"
+          value={eventData.location}
+          onChange={handleChange}
+          placeholder="Location"
+          className="border p-2 rounded"
+          required
+        />
+        <input
+          type="text"
+          name="organizer"
+          value={eventData.organizer}
+          onChange={handleChange}
+          placeholder="Organizer Name"
+          className="border p-2 rounded"
+          required
+        />
+        <select
+          name="category"
+          value={eventData.category}
+          onChange={handleChange}
+          className="border p-2 rounded"
+          required
+        >
+          <option value="Conference">Conference</option>
+          <option value="Workshop">Workshop</option>
+          <option value="Meetup">Meetup</option>
+          <option value="Exhibition">Exhibition</option>
+        </select>
+        <select
+          name="ticketPrice"
+          value={eventData.ticketPrice}
+          onChange={handleChange}
+          className="border p-2 rounded"
+          required
+        >
+          <option value="Free">Free</option>
+          <option value="Paid">Paid</option>
+        </select>
+        {eventData.ticketPrice === "Paid" && (
+          <input
+            type="number"
+            name="ticketPrice"
+            value={eventData.ticketPrice}
+            onChange={handleChange}
+            placeholder="Ticket Price"
+            className="border p-2 rounded"
+          />
+        )}
+        <input
+          type="number"
+          name="maxParticipants"
+          value={eventData.maxParticipants}
+          onChange={handleChange}
+          placeholder="Max Participants"
+          className="border p-2 rounded"
+          required
+        />
+        <input
+          type="file"
+          name="banner"
+          onChange={handleFileChange}
+          className="border p-2 rounded"
+          required
+        />
+        <textarea
+          name="description"
+          value={eventData.description}
+          onChange={handleChange}
+          placeholder="Event Description"
+          className="border p-2 rounded col-span-2"
+          required
+        />
+        <button type="submit" className="bg-blue-500 text-white p-2 rounded col-span-2">
+          + Add Event
+        </button>
       </form>
-
-      {/* Events List */}
-      <div className="grid grid-cols-3 gap-4">
-        {events.map(event => (
-          <div key={event._id} className="bg-gray-100 p-4 rounded shadow">
-            <h3 className="text-lg font-bold">{event.title}</h3>
-            <p>{event.description}</p>
-            <p className="text-sm">{new Date(event.date).toLocaleDateString()}</p>
-            <p className="text-sm">{event.location}</p>
-            <button onClick={() => handleEdit(event)} className="bg-yellow-500 text-white px-2 py-1 mr-2">Edit</button>
-            <button onClick={() => handleDelete(event._id)} className="bg-red-500 text-white px-2 py-1">Delete</button>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };

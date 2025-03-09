@@ -28,7 +28,7 @@ const Footer = () => {
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Home</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Events</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Gallery</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Register</a></li>
+              <li><a href="/register" className="text-gray-300 hover:text-white transition-colors duration-300">Register</a></li>
             </ul>
           </div>
 
@@ -36,9 +36,12 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-semibold mb-6">Events</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Software Competitions</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Management Events</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Soft Skills Challenges</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Peaching: Idea Peaching Event</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Add-Mad Show</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Code-A-Thon</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Virtual Trading</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Captura</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Quize</a></li>
             </ul>
           </div>
 
@@ -49,6 +52,7 @@ const Footer = () => {
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Contact Us</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Privacy Policy</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Terms of Service</a></li>
+              
             </ul>
           </div>
         </div>

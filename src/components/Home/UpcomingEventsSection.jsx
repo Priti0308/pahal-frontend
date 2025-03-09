@@ -7,7 +7,7 @@ const UpcomingEventsSection = () => {
       image: logo,
       category: "Software",
       date: "March 15, 2024",
-      title: "Code Quest 2024",
+      title: "Pahal: Idea Peaching",
       description: "A 24-hour coding marathon where teams compete to solve real-world problems through innovative software solutions.",
     },
     {
@@ -15,7 +15,7 @@ const UpcomingEventsSection = () => {
       image: logo,
       category: "Management",
       date: "March 16, 2024",
-      title: "Business Strategy Summit",
+      title: "Add-Mad Show",
       description: "Showcase your business acumen through case studies, presentations, and strategic planning challenges.",
     },
     {
@@ -23,7 +23,7 @@ const UpcomingEventsSection = () => {
       image: logo,
       category: "Soft Skills",
       date: "March 17, 2024",
-      title: "Communication Masters",
+      title: "Code-A-Thon",
       description: "Develop and showcase your public speaking, leadership, and interpersonal skills through various challenges.",
     },
   ];
@@ -75,9 +75,9 @@ const UpcomingEventsSection = () => {
 
                 {/* Register Button */}
                 <div className="mt-auto">
-                  <button className="w-full py-2 bg-black text-white rounded hover:bg-gray-800 transition duration-300">
+                  <a href="/register"><button className="w-full py-2 bg-black text-white rounded hover:bg-gray-800 transition duration-300">
                     Register Now
-                  </button>
+                  </button></a>
                 </div>
               </div>
             </div>

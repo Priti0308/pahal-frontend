@@ -21,10 +21,10 @@ const Header = () => {
           <Link to="/events" className="text-gray-800 hover:text-blue-600 font-medium">Events</Link>
           <Link to="/gallery" className="text-gray-500 hover:text-blue-600 font-medium">Gallery</Link>
           <Link to="/about" className="text-gray-500 hover:text-blue-600 font-medium">About</Link>
-          <Link to="/contact" className="text-gray-500 hover:text-blue-600 font-medium">Contact</Link>
+          
         </nav>
         
-        {/* Register Button */}
+       
         <Link 
           to="/register"className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition duration-200"
         >

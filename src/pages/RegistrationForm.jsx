@@ -92,11 +92,15 @@ const RegistrationForm = () => {
               required
             >
               <option value="">Select an event</option>
-              <option value="Coding Competition">C Bilnd Coding</option>
-              <option value="Robotics">Poster Presentation</option>
-              <option value="Hackathon">Hackathon</option>
-              <option value="AI Workshop">Robotics</option>
-              <option value="Tech Talk">Spot on Photography</option>
+              <option value="Coding Competition">Pahal: Idea Peaching Event</option>
+              <option value="Robotics">Add-Mad Show</option>
+              <option value="Hackathon">Code-A-Thon (1st time)</option>
+              <option value="AI Workshop">Virtual Trading</option>
+              <option value="Tech Talk">Captura</option>
+              <option value="Hackathon">Quiz</option>
+              <option value="AI Workshop">One Minute Game </option>
+              <option value="Tech Talk">Treasure Hunt</option>
+              <option value="Tech Talk">Volleyboll (1st time)</option>
             </select>
           </div>
           <button

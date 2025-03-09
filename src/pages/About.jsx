@@ -6,7 +6,9 @@ const AboutUs = () => {
       {/* Hero Section */}
       <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=2070&auto=format&fit=crop" 
+          // src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=2070&auto=format&fit=crop" 
+          // src="https://raw.githubusercontent.com/Mahesh-Langote/pahal-images/master/IMG_8887.JPG"
+          src="https://raw.githubusercontent.com/Mahesh-Langote/pahal-images/master/IMG_9034.JPG"
           alt="Students participating in Pahal competition" 
           className="absolute w-full h-full object-cover"
         />
@@ -37,7 +39,8 @@ const AboutUs = () => {
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=2070&auto=format&fit=crop" 
+                // src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=2070&auto=format&fit=crop"
+                src="https://raw.githubusercontent.com/Mahesh-Langote/pahal-images/master/IMG_8858.JPG" 
                 alt="First Pahal competition in 2010" 
                 className="rounded-lg shadow-xl"
               />
@@ -156,18 +159,18 @@ const AboutUs = () => {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <img 
-                src="https://images.unsplash.com/photo-1495465798138-718f86d1a4bc?q=80&w=2070&auto=format&fit=crop" 
+                src="https://raw.githubusercontent.com/Mahesh-Langote/pahal-images/master/IMG_8866.JPG" 
                 alt="Students collaborating" 
                 className="rounded-lg h-full object-cover"
               />
               <div className="space-y-4">
                 <img 
-                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop" 
+                  src="https://raw.githubusercontent.com/Mahesh-Langote/pahal-images/master/IMG_9068.JPG" 
                   alt="Award ceremony" 
                   className="rounded-lg h-[48%] object-cover"
                 />
                 <img 
-                  src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop" 
+                  src="https://raw.githubusercontent.com/Mahesh-Langote/pahal-images/master/IMG_8883.JPG" 
                   alt="Students presenting" 
                   className="rounded-lg h-[48%] object-cover"
                 />
@@ -192,13 +195,13 @@ const AboutUs = () => {
                 title: "Tech Innovations",
                 description: "Software development, AI solutions, and innovative tech projects.",
                 icon: "💻",
-                image: "https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=2070&auto=format&fit=crop"
+                image: "https://raw.githubusercontent.com/Mahesh-Langote/pahal-images/master/IMG_8896.JPG"
               },
               {
                 title: "Business Strategy",
                 description: "Case studies, business plans, and entrepreneurial pitches.",
                 icon: "📊",
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+                image: "https://raw.githubusercontent.com/Mahesh-Langote/pahal-images/master/IMG_9074.JPG"
               },
               {
                 title: "Design Challenges",
