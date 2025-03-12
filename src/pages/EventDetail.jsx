@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getEventById } from "../data/eventData";
 import EventBanner from "../components/EventDetails/EventBanner";
 import EventCoordinators from "../components/EventDetails/EventCoordinators";
 import EventSchedule from "../components/EventDetails/EventSchedule";
@@ -21,17 +20,36 @@ function EventDetails() {
   const { id } = useParams();
   const [event, setEvent] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // In a real app, you might fetch from an API here
-    // For now, we're using our local getEventById function
-    const eventData = getEventById(Number(id) || 1); // Default to first event if no ID
-    setEvent(eventData);
-    setLoading(false);
+    const fetchEventDetails = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/events/${id}`);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        
+        const eventData = await response.json();
+        setEvent(eventData);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+        console.error("Error fetching event details:", err);
+      }
+    };
+
+    fetchEventDetails();
   }, [id]);
 
   if (loading) {
-    return <div className="container mx-auto px-4 py-8">Loading...</div>;
+    return <div className="container mx-auto px-4 py-8">Loading event details...</div>;
+  }
+
+  if (error) {
+    return <div className="container mx-auto px-4 py-8">Error loading event: {error}</div>;
   }
 
   if (!event) {

@@ -1,13 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { listEvents } from "../data/eventData";
 
 function EventList() {
   const navigate = useNavigate();
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/events');
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        setEvents(data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+        console.error("Error fetching events:", err);
+      }
+    };
+
+    fetchEvents();
+  }, []);
 
   const handleRegisterClick = (eventId) => {
     navigate(`/events/${eventId}`);
   };
+
+  if (loading) {
+    return (
+      <div className="py-16 bg-white text-center">
+        <p>Loading events...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="py-16 bg-white text-center">
+        <p className="text-red-500">Error loading events: {error}</p>
+      </div>
+    );
+  }
 
   return (
     <section className="py-16 bg-white">
@@ -22,7 +62,7 @@ function EventList() {
 
         {/* Events Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {listEvents.map((event) => (
+          {events.map((event) => (
             <div
               key={event.id}
               className="flex flex-col bg-white rounded-lg overflow-hidden shadow-md"
@@ -55,13 +95,12 @@ function EventList() {
 
                 {/* Register Button */}
                 <div className="mt-auto">
-              <a href=""><button 
-                    onClick={() => handleRegisterClick(event.id)}
+                  <button 
+                    onClick={() => handleRegisterClick(event._id)}
                     className="w-full py-2 bg-black text-white rounded hover:bg-gray-800 transition duration-300"
                   >
                     Register Now
-                  </button></a>
-
+                  </button>
                 </div>
               </div>
             </div>
