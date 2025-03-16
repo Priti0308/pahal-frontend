@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-">
           {/* Institute Info */}
           <div className="flex flex-col">
             <div className="flex items-center mb-4">
@@ -28,12 +28,12 @@ const Footer = () => {
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Home</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Events</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Gallery</a></li>
-              <li><a href="/register" className="text-gray-300 hover:text-white transition-colors duration-300">Register</a></li>
+              {/* <li><a href="/register" className="text-gray-300 hover:text-white transition-colors duration-300">Register</a></li> */}
             </ul>
           </div>
 
           {/* Events */}
-          <div>
+          {/* <div>
             <h3 className="text-xl font-semibold mb-6">Events</h3>
             <ul className="space-y-3">
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Peaching: Idea Peaching Event</a></li>
@@ -43,7 +43,7 @@ const Footer = () => {
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Captura</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-300">Quize</a></li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Connect */}
           <div>

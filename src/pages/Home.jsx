@@ -12,10 +12,10 @@ function Home() {
       <PahalHeroSection />
       <AboutCIMDRSection />
       <WhoShouldJoinSection />
-      <UpcomingEventsSection />
+      {/* <UpcomingEventsSection />
       <CurrentEventGallery />
       <PrizesRecognitionSection />
-      <PastEventsWinnersSection />
+      <PastEventsWinnersSection /> */}
     </>
 
   );
