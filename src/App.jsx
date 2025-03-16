@@ -8,6 +8,8 @@ import Gallery from "./pages/Gallary";
 import Home from "./pages/Home";
 import AboutUs from "./pages/About";
 import RegistrationForm from "./pages/RegistrationForm";
+import Login from "./pages/Login";
+ 
 
 // Admin Components
 import AdminLayout from "./layouts/AdminLayout";
@@ -20,39 +22,43 @@ import AdminEventDetails from "./components/adminDashboard/AdminEventDetails";
 import CreateEventForm from "./components/adminDashboard/CreateEventForm";
 import ManageEvents from "./components/adminDashboard/ManageEvents";
 import EditEventForm from "./components/adminDashboard/EditEventForm";
-
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
-    <Router>
-      <Header/>
-      <Routes>
-        {/* 🌍 Public Routes */}
-       <Route path="/" element={<Home />} /> 
-        {/* <Route path="/" element={< Dashboard/>} /> */}
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/events" element={<EventList />} />
-        <Route path="/about" element={<AboutUs />} />
-        {/* <Route path="/contact" element={<ContactUs />} /> */}
-        <Route path="/events/:id" element={<EventDetails />} />
-        <Route path="/register" element={<RegistrationForm />} />
+    <AuthProvider>
+      <Router>
+        <Header />
+        <Routes>
+          {/* 🌍 Public Routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/events" element={<EventList />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/events/:id" element={<EventDetails />} />
+          <Route path="/register" element={<RegistrationForm />} />
+          <Route path="/login" element={<Login />} />
 
-        {/* 🔐 Admin Routes - Wrapped with Admin Layout */}
-        <Route path="admin" element={<AdminLayout />}>
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="events" element={<EventManagement />} />
-          <Route path="users" element={<UserManagement />} />
-          <Route path="create-event" element={<CreateEventForm />} />
-          <Route path="manage-events" element={<ManageEvents />} />
-          <Route path="events/:id" element={<EventDetails />} />
-          <Route path="event-list" element={<AdminEventList />} />
-          <Route path="events-user/:eventId" element={<AdminEventDetails />} />
-          <Route path="edit-event/:eventId" element={<EditEventForm />} />
-          <Route path="settings" element={<Settings />} />
-        </Route>
-      </Routes>
-      <Footer/>
-    </Router>
+          {/* 🔐 Admin Routes - Protected with Authentication */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="admin" element={<AdminLayout />}>
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="events" element={<EventManagement />} />
+              <Route path="users" element={<UserManagement />} />
+              <Route path="create-event" element={<CreateEventForm />} />
+              <Route path="manage-events" element={<ManageEvents />} />
+              <Route path="events/:id" element={<EventDetails />} />
+              <Route path="event-list" element={<AdminEventList />} />
+              <Route path="events-user/:eventId" element={<AdminEventDetails />} />
+              <Route path="edit-event/:eventId" element={<EditEventForm />} />
+              <Route path="settings" element={<Settings />} />
+            </Route>
+          </Route>
+        </Routes>
+        <Footer />
+      </Router>
+    </AuthProvider>
   );
 }
 
