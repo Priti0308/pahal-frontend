@@ -16,6 +16,7 @@ import EventManagement from "./components/adminDashboard/EventManagement";
 import UserManagement from "./components/adminDashboard/UserManagement";
 import Settings from "./components/adminDashboard/Settings";
 import AdminEventList from "./components/adminDashboard/AdminEventList";
+import AdminEventDetails from "./components/adminDashboard/AdminEventDetails";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           <Route path="events" element={<EventManagement />} />
           <Route path="users" element={<UserManagement />} />
           <Route path="event-list" element={<AdminEventList />} />
+          <Route path="events/:eventId" element={<AdminEventDetails />} />
           <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
