@@ -4,7 +4,8 @@ import apiService from "../../context/apiService";
 
 const Settings = () => {
   const [darkMode, setDarkMode] = useState(false);
-  const [password, setPassword] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
   const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
   const [adminData, setAdminData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -29,26 +30,31 @@ const Settings = () => {
   const handlePasswordChange = async (e) => {
     e.preventDefault();
     
-    if (password !== newPasswordConfirm) {
+    if (newPassword !== newPasswordConfirm) {
       setError("Passwords do not match");
       return;
     }
     
-    if (password.length < 8) {
+    if (newPassword.length < 8) {
       setError("Password must be at least 8 characters long");
       return;
     }
     
     try { 
-      await apiService.post("/auth/change-password", { password });
+      await apiService.put("/auth/change-password", { 
+        oldPassword, 
+        newPassword 
+      });
       setSuccessMessage("Password updated successfully");
-      setPassword("");
+      setOldPassword("");
+      setNewPassword("");
       setNewPasswordConfirm("");
       setError("");
     } catch (err) {
-      setError(err.message || "Failed to update password");
+      setError(err.response?.data?.message || "Failed to update password");
     }
   }; 
+
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
@@ -124,19 +130,31 @@ const Settings = () => {
         </h2>
         <form onSubmit={handlePasswordChange}>
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-1">New Password</label>
+            <label className="block text-sm font-medium mb-1">Current Password</label>
             <input
               type="password"
-              placeholder="Enter new password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter current password"
+              value={oldPassword}
+              onChange={(e) => setOldPassword(e.target.value)}
               className="w-full px-4 py-2 rounded-lg border focus:ring focus:ring-blue-500 dark:bg-gray-700"
               required
             />
           </div>
           
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-1">Confirm Password</label>
+            <label className="block text-sm font-medium mb-1">New Password</label>
+            <input
+              type="password"
+              placeholder="Enter new password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              className="w-full px-4 py-2 rounded-lg border focus:ring focus:ring-blue-500 dark:bg-gray-700"
+              required
+            />
+          </div>
+          
+          <div className="mb-4">
+            <label className="block text-sm font-medium mb-1">Confirm New Password</label>
             <input
               type="password"
               placeholder="Confirm new password"
@@ -155,8 +173,6 @@ const Settings = () => {
           </button>
         </form>
       </div>
-
-      
     </div>
   );
 };
