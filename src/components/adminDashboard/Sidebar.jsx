@@ -46,6 +46,15 @@ const Sidebar = () => {
             {isOpen && "Manage Events"}
           </Link>
         </li>
+        <li className={`${location.pathname === "/admin/events" ? "bg-gray-700" : ""} rounded-lg`}>
+          <Link
+            to="/admin/event-list"
+            className="flex items-center px-4 py-2 hover:bg-gray-800 rounded-md transition"
+          >
+            <FaCalendarAlt size={20} className="mr-2 text-blue-400" />
+            {isOpen && "Events List"}
+          </Link>
+        </li>
 
         <li className={`${location.pathname === "/admin/users" ? "bg-gray-700" : ""} rounded-lg`}>
           <Link

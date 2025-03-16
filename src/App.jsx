@@ -15,6 +15,7 @@ import Dashboard from "./components/adminDashboard/Dashboard";
 import EventManagement from "./components/adminDashboard/EventManagement";
 import UserManagement from "./components/adminDashboard/UserManagement";
 import Settings from "./components/adminDashboard/Settings";
+import AdminEventList from "./components/adminDashboard/AdminEventList";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="events" element={<EventManagement />} />
           <Route path="users" element={<UserManagement />} />
+          <Route path="event-list" element={<AdminEventList />} />
           <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
