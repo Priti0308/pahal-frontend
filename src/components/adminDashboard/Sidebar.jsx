@@ -39,7 +39,7 @@ const Sidebar = () => {
 
         <li className={`${location.pathname === "/admin/events" ? "bg-gray-700" : ""} rounded-lg`}>
           <Link
-            to="/admin/events"
+            to="/admin/register"
             className="flex items-center px-4 py-2 hover:bg-gray-800 rounded-md transition"
           >
             <FaCalendarAlt size={20} className="mr-2 text-blue-400" />
