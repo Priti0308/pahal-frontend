@@ -19,6 +19,7 @@ import AdminEventList from "./components/adminDashboard/AdminEventList";
 import AdminEventDetails from "./components/adminDashboard/AdminEventDetails";
 import CreateEventForm from "./components/adminDashboard/CreateEventForm";
 import ManageEvents from "./components/adminDashboard/ManageEvents";
+import EditEventForm from "./components/adminDashboard/EditEventForm";
 
 
 function App() {
@@ -45,7 +46,8 @@ function App() {
           <Route path="manage-events" element={<ManageEvents />} />
           <Route path="events/:id" element={<EventDetails />} />
           <Route path="event-list" element={<AdminEventList />} />
-          <Route path="events/:eventId" element={<AdminEventDetails />} />
+          <Route path="events-user/:eventId" element={<AdminEventDetails />} />
+          <Route path="edit-event/:eventId" element={<EditEventForm />} />
           <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>

@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { 
-  FaCalendarAlt, FaUsers, FaBars, FaCog, FaTachometerAlt 
+  FaCalendarAlt, FaUserAstronaut, FaBars, FaCog, FaTachometerAlt 
 } from "react-icons/fa";
 import logo from "../../assets/logo.png"; // Ensure the path is correct
 
@@ -51,20 +51,12 @@ const Sidebar = () => {
             to="/admin/event-list"
             className="flex items-center px-4 py-2 hover:bg-gray-800 rounded-md transition"
           >
-            <FaCalendarAlt size={20} className="mr-2 text-blue-400" />
-            {isOpen && "Events List"}
+            <FaUserAstronaut size={20} className="mr-2 text-blue-400" />
+            {isOpen && "View Participants"}
           </Link>
         </li>
 
-        <li className={`${location.pathname === "/admin/users" ? "bg-gray-700" : ""} rounded-lg`}>
-          <Link
-            to="/admin/users"
-            className="flex items-center px-4 py-2 hover:bg-gray-800 rounded-md transition"
-          >
-            <FaUsers size={20} className="mr-2 text-green-400" />
-            {isOpen && "User Management"}
-          </Link>
-        </li>
+         
 
         <li className={`${location.pathname === "/admin/settings" ? "bg-gray-700" : ""} rounded-lg`}>
           <Link

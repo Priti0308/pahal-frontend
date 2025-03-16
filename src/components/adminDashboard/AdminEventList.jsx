@@ -26,7 +26,7 @@ function AdminEventList() {
   }, []);
 
   const handleViewDetailsClick = (eventId) => {
-    navigate(`/admin/events/${eventId}`);
+    navigate(`/admin/events-user/${eventId}`);
   };
 
   if (loading) {
@@ -55,8 +55,7 @@ function AdminEventList() {
               <tr className="bg-gray-200 text-gray-700 text-left">
                 <th className="py-3 px-4">Event</th>
                 <th className="py-3 px-4">Category</th>
-                <th className="py-3 px-4">Date</th>
-                <th className="py-3 px-4">Status</th>
+                <th className="py-3 px-4">Date</th> 
                 <th className="py-3 px-4 text-center">Actions</th>
               </tr>
             </thead>
@@ -66,15 +65,7 @@ function AdminEventList() {
                   <td className="py-3 px-4 font-medium text-gray-900">{event.title}</td>
                   <td className="py-3 px-4">{event.category}</td>
                   <td className="py-3 px-4">{event.date}</td>
-                  <td className="py-3 px-4">
-                    <span
-                      className={`px-2 py-1 text-xs font-semibold rounded-md ${
-                        event.status === "Active" ? "bg-green-200 text-green-800" : "bg-red-200 text-red-800"
-                      }`}
-                    >
-                      {event.status}
-                    </span>
-                  </td>
+                   
                   <td className="py-3 px-4 text-center">
                     <button
                       onClick={() => handleViewDetailsClick(event._id)}
