@@ -72,7 +72,7 @@ const ManageEvents = () => {
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold text-gray-800">Manage Events</h1>
         <button 
-          onClick={() => navigate('/create-event')}
+          onClick={() => navigate('/admin/create-event')}
           className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700"
         >
           Create New Event

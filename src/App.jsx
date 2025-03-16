@@ -18,6 +18,7 @@ import Settings from "./components/adminDashboard/Settings";
 import AdminEventList from "./components/adminDashboard/AdminEventList";
 import AdminEventDetails from "./components/adminDashboard/AdminEventDetails";
 import CreateEventForm from "./components/adminDashboard/CreateEventForm";
+import ManageEvents from "./components/adminDashboard/ManageEvents";
 
 
 function App() {
@@ -40,7 +41,8 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="events" element={<EventManagement />} />
           <Route path="users" element={<UserManagement />} />
-          <Route path="register" element={<CreateEventForm />} />
+          <Route path="create-event" element={<CreateEventForm />} />
+          <Route path="manage-events" element={<ManageEvents />} />
           <Route path="event-list" element={<AdminEventList />} />
           <Route path="events/:eventId" element={<AdminEventDetails />} />
           <Route path="settings" element={<Settings />} />
