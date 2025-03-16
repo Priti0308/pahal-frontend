@@ -36,7 +36,7 @@ const ManageEvents = () => {
   };
 
   const handleView = (eventId) => {
-    navigate(`/events/${eventId}`);
+    navigate(`/admin/events/${eventId}`);
   };
 
   const handleDelete = async (eventId) => {

@@ -43,6 +43,7 @@ function App() {
           <Route path="users" element={<UserManagement />} />
           <Route path="create-event" element={<CreateEventForm />} />
           <Route path="manage-events" element={<ManageEvents />} />
+          <Route path="events/:id" element={<EventDetails />} />
           <Route path="event-list" element={<AdminEventList />} />
           <Route path="events/:eventId" element={<AdminEventDetails />} />
           <Route path="settings" element={<Settings />} />
