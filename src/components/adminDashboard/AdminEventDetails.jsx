@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../../context/constants";
 
 function AdminEventDetails() {
   const { eventId } = useParams();
@@ -13,7 +14,7 @@ function AdminEventDetails() {
     const fetchEventData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5000/api/participants/event/${eventId}`);
+        const response = await axios.get(`${BASE_URL}/participants/event/${eventId}`);
         setEventData(response.data);
         setLoading(false);
       } catch (err) {

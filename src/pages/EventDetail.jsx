@@ -17,6 +17,7 @@ import {
   Check,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { BASE_URL } from "../context/constants";
 
 // Map icon strings to Lucide components for resources section
 const iconMap = {
@@ -46,7 +47,7 @@ function EventDetails() {
   useEffect(() => {
     const fetchEventDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/events/${id}`);
+        const response = await fetch(`${BASE_URL}/events/${id}`); 
 
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

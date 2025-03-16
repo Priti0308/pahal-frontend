@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PlusCircle, XCircle, Save } from 'lucide-react';
+import { BASE_URL } from '../../context/constants';
 
 const CreateEventForm = () => {
   const [formData, setFormData] = useState({
@@ -180,7 +181,7 @@ const CreateEventForm = () => {
     }
     
     try {
-      const response = await fetch('http://localhost:5000/api/events', {
+      const response = await fetch(`${BASE_URL}/events`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

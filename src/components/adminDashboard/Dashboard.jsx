@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaUsers, FaCalendarAlt, FaCheckCircle, FaClock } from "react-icons/fa";
 import axios from "axios";
+import { BASE_URL } from "../../context/constants";
 
 const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState({
@@ -22,7 +23,7 @@ const Dashboard = () => {
     const fetchDashboardData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:5000/api/admin/dashboard/stats');
+        const response = await axios.get(`${BASE_URL}/admin/dashboard/stats`);
         setDashboardData(response.data);
         setError(null);
       } catch (err) {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../context/constants";
 
 function AdminEventList() {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ function AdminEventList() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/events");
+        const response = await fetch(`${BASE_URL}/events`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }

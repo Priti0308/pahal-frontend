@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { PlusCircle, XCircle, Save, ArrowLeft } from 'lucide-react';
+import { BASE_URL } from '../../context/constants';
 
 const EditEventForm = () => {
   const { eventId } = useParams();
@@ -77,7 +78,7 @@ const EditEventForm = () => {
     const fetchEventData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:5000/api/events/${eventId}`);
+        const response = await fetch(`${BASE_URL}/events/${eventId}`);
         
         if (!response.ok) {
           throw new Error('Failed to fetch event data');
@@ -234,7 +235,7 @@ const EditEventForm = () => {
     }
     
     try {
-      const response = await fetch(`http://localhost:5000/api/events/${eventId}`, {
+      const response = await fetch(`${BASE_URL}/events/${eventId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

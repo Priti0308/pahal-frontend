@@ -8,9 +8,7 @@ import Gallery from "./pages/Gallary";
 import Home from "./pages/Home";
 import AboutUs from "./pages/About";
 import RegistrationForm from "./pages/RegistrationForm";
-import Login from "./pages/Login";
-
-// Auth Provider
+import Login from "./pages/Login"; 
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 

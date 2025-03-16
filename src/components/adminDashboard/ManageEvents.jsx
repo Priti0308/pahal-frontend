@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Edit, Trash2, Eye, Search, RefreshCw } from "lucide-react";
+import { BASE_URL } from "../../context/constants";
 
 const ManageEvents = () => {
   const [events, setEvents] = useState([]);
@@ -16,7 +17,7 @@ const ManageEvents = () => {
   const fetchEvents = async () => {
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:5000/api/events");
+      const response = await fetch(`${BASE_URL}/events`);
       if (!response.ok) {
         throw new Error("Failed to fetch events");
       }

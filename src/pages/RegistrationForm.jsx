@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "../context/constants";
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +19,7 @@ const RegistrationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/register", formData);
+      const response = await axios.post(`${BASE_URL}/register`, formData);
       setMessage(response.data.message);
     } catch (error) {
       setMessage("Registration failed. Please try again.");
