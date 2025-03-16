@@ -1,6 +1,51 @@
+import { useState, useEffect } from "react";
 import { FaUsers, FaCalendarAlt, FaCheckCircle, FaClock } from "react-icons/fa";
+import axios from "axios";
 
 const Dashboard = () => {
+  const [dashboardData, setDashboardData] = useState({
+    overview: {
+      totalEvents: 0,
+      activeEvents: 0,
+      totalParticipants: 0,
+      inactiveEvents: 0
+    },
+    eventsByCategory: [],
+    topEvents: [],
+    recentRegistrations: [],
+    registrationTrend: []
+  });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchDashboardData = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get('http://localhost:5000/api/admin/dashboard/stats');
+        setDashboardData(response.data);
+        setError(null);
+      } catch (err) {
+        setError(err.response?.data?.message || 'Failed to fetch dashboard data');
+        console.error('Error fetching dashboard data:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDashboardData();
+  }, []);
+
+  if (loading) {
+    return <div className="p-6 text-center">Loading dashboard data...</div>;
+  }
+
+  if (error) {
+    return <div className="p-6 text-center text-red-500">Error: {error}</div>;
+  }
+
+  const { overview, recentRegistrations } = dashboardData;
+
   return (
     <div className="p-6">
       {/* Page Header */}
@@ -12,85 +57,95 @@ const Dashboard = () => {
         <div className="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4 hover:shadow-xl transition duration-300">
           <FaCalendarAlt size={40} className="text-blue-500" />
           <div>
-            <h2 className="text-2xl font-bold">120</h2>
+            <h2 className="text-2xl font-bold">{overview.totalEvents}</h2>
             <p className="text-gray-600">Total Events</p>
           </div>
         </div>
 
-        {/* Upcoming Events */}
+        {/* Active Events */}
         <div className="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4 hover:shadow-xl transition duration-300">
           <FaClock size={40} className="text-yellow-500" />
           <div>
-            <h2 className="text-2xl font-bold">15</h2>
-            <p className="text-gray-600">Upcoming Events</p>
+            <h2 className="text-2xl font-bold">{overview.activeEvents}</h2>
+            <p className="text-gray-600">Active Events</p>
           </div>
         </div>
 
-        {/* Past Events */}
+        {/* Inactive Events */}
         <div className="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4 hover:shadow-xl transition duration-300">
           <FaCheckCircle size={40} className="text-green-500" />
           <div>
-            <h2 className="text-2xl font-bold">105</h2>
-            <p className="text-gray-600">Past Events</p>
+            <h2 className="text-2xl font-bold">{overview.inactiveEvents}</h2>
+            <p className="text-gray-600">Inactive Events</p>
           </div>
         </div>
 
-        {/* Total Users */}
+        {/* Total Participants */}
         <div className="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4 hover:shadow-xl transition duration-300">
           <FaUsers size={40} className="text-purple-500" />
           <div>
-            <h2 className="text-2xl font-bold">300</h2>
-            <p className="text-gray-600">Total Users</p>
+            <h2 className="text-2xl font-bold">{overview.totalParticipants}</h2>
+            <p className="text-gray-600">Total Participants</p>
           </div>
         </div>
       </div>
 
-      {/* User Statistics */}
-      <h2 className="text-2xl font-semibold text-gray-800 mt-10 mb-4">User Overview</h2>
+      {/* Event Category Breakdown */}
+      <h2 className="text-2xl font-semibold text-gray-800 mt-10 mb-4">Events by Category</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4 hover:shadow-xl transition duration-300">
-          <FaUsers size={40} className="text-red-500" />
-          <div>
-            <h2 className="text-2xl font-bold">20</h2>
-            <p className="text-gray-600">Admins</p>
+        {dashboardData.eventsByCategory.map((category) => (
+          <div key={category._id} className="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4 hover:shadow-xl transition duration-300">
+            <div className="p-3 rounded-full bg-blue-100">
+              <FaCalendarAlt size={24} className="text-blue-500" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold">{category.count}</h2>
+              <p className="text-gray-600">{category._id}</p>
+            </div>
           </div>
-        </div>
-
-        <div className="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4 hover:shadow-xl transition duration-300">
-          <FaUsers size={40} className="text-teal-500" />
-          <div>
-            <h2 className="text-2xl font-bold">50</h2>
-            <p className="text-gray-600">Organizers</p>
-          </div>
-        </div>
-
-        <div className="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4 hover:shadow-xl transition duration-300">
-          <FaUsers size={40} className="text-blue-500" />
-          <div>
-            <h2 className="text-2xl font-bold">230</h2>
-            <p className="text-gray-600">General Users</p>
-          </div>
-        </div>
+        ))}
       </div>
 
-      {/* Recent Activities */}
-      <h2 className="text-2xl font-semibold text-gray-800 mt-10 mb-4">Recent Activities</h2>
+      {/* Top Events */}
+      <h2 className="text-2xl font-semibold text-gray-800 mt-10 mb-4">Top Events</h2>
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <table className="min-w-full">
+          <thead>
+            <tr>
+              <th className="text-left py-2 px-4 border-b">Event Title</th>
+              <th className="text-left py-2 px-4 border-b">Category</th>
+              <th className="text-right py-2 px-4 border-b">Participants</th>
+            </tr>
+          </thead>
+          <tbody>
+            {dashboardData.topEvents.map((event) => (
+              <tr key={event._id} className="hover:bg-gray-50">
+                <td className="py-2 px-4 border-b">{event.title}</td>
+                <td className="py-2 px-4 border-b">{event.category}</td>
+                <td className="py-2 px-4 border-b text-right">{event.attendees}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Recent Registrations */}
+      <h2 className="text-2xl font-semibold text-gray-800 mt-10 mb-4">Recent Registrations</h2>
       <div className="bg-white p-6 rounded-lg shadow-md">
         <ul className="space-y-3">
-          <li className="border-b pb-2">
-            <span className="font-bold text-blue-600">Tech Meetup</span> was added on <span className="text-gray-500">March 7, 2025</span>.
-          </li>
-          <li className="border-b pb-2">
-            <span className="font-bold text-green-600">New User</span> "John Doe" registered as an organizer.
-          </li>
-          <li className="border-b pb-2">
-            <span className="font-bold text-yellow-600">Art Exhibition</span> was updated with new details.
-          </li>
-          <li>
-            <span className="font-bold text-red-600">User "AdminX"</span> modified event permissions.
-          </li>
+          {recentRegistrations.map((registration) => (
+            <li key={registration._id} className="border-b pb-2">
+              <span className="font-bold text-blue-600">{registration.teamName}</span> registered for{" "}
+              <span className="font-bold">{registration.eventId.title}</span> on{" "}
+              <span className="text-gray-500">
+                {new Date(registration.registrationDate).toLocaleDateString()}
+              </span>
+            </li>
+          ))}
         </ul>
       </div>
+
+      
     </div>
   );
 };
