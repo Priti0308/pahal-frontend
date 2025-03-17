@@ -70,7 +70,7 @@ function EventList() {
               {/* Event Image */}
               <div className="h-48 overflow-hidden">
                 <img
-                  src={event.image}
+                  src={event.bannerImage}
                   alt={event.title}
                   className="w-full h-full object-cover"
                 />

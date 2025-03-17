@@ -25,11 +25,11 @@ const Header = () => {
         </nav>
         
        
-        <Link 
+        {/* <Link 
           to="/register"className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition duration-200"
         >
           Register Now
-        </Link>
+        </Link> */}
         
       </div>
       

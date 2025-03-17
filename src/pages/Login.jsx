@@ -3,8 +3,8 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
-  const [username, setUsername] = useState("superadmin_cimdr");
-  const [password, setPassword] = useState("SuperAdmin@2024!");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   

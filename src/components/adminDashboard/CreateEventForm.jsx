@@ -269,13 +269,10 @@ const CreateEventForm = () => {
                 className="w-full p-2 border border-gray-300 rounded-md"
               >
                 <option value="">Select Category</option>
-                <option value="Software Development">Software Development</option>
-                <option value="Design">Design</option>
-                <option value="Business">Business</option>
-                <option value="Engineering">Engineering</option>
-                <option value="Science">Science</option>
-                <option value="Arts">Arts</option>
-                <option value="Other">Other</option>
+
+                <option value="Technical">Technical</option>
+                <option value="Management">Management</option>
+                <option value="Fun & Sports">Fun & Sports</option>
               </select>
               <p className="text-xs text-gray-500 mt-1">Choose the category that best describes your event</p>
             </div>
