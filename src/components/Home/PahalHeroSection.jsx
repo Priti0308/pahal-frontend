@@ -20,7 +20,7 @@ const PahalHeroSection = () => {
         <div className="max-w-3xl">
           {/* Heading */}
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Pahal: CIMDR Inter-Collegiate Competition 2024
+            Pahal: CIMDR Inter-Collegiate Competition 2025
           </h1>
           
           {/* Description */}
