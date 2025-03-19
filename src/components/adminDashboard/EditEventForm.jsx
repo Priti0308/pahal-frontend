@@ -379,7 +379,7 @@ const EditEventForm = () => {
                 value={formData.date}
                 onChange={handleChange}
                 className={`w-full p-2 border rounded-md ${errors.date ? 'border-red-500' : 'border-gray-300'}`}
-                placeholder="e.g., March 15-17, 2024"
+                placeholder="e.g., March 15 2025"
               />
               {errors.date && <p className="text-red-500 text-sm mt-1">{errors.date}</p>}
               <p className="text-xs text-gray-500 mt-1">Specify the date range for your event (MM/DD/YYYY format)</p>
