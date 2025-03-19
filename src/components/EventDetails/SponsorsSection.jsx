@@ -16,7 +16,7 @@ const SponsorsSection = ({ event }) => {
               <img
                 src={sponsor.image}
                 alt={sponsor.name}
-                className="w-24 h-24 object-cover rounded-md"
+                className="w-24 h-24 object-contain rounded-md"
               />
               <p className="mt-2 text-sm font-medium">{sponsor.name}</p>
             </div>
