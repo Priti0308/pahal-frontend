@@ -10,13 +10,13 @@ import robotics from "../assets/logo.png";
 export const eventsData = [
   {
     id: 1,
-    title: "Pahal: Idea Peaching Event",
+    title: "Idea Generation",
     emoji: "🚀",
     category: "Business Idea",
     date: "March 15-17, 2024",
     time: "9:00 AM - 6:00 PM",
     location: "CIMDR Campus, Sangli",
-    bannerImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop",
+    bannerImage: "https://raw.githubusercontent.com/Priti0308/pahal-public/main/IMG_9031.jpg",
     description: "CIMDR's flagship software development competition that brings together the brightest minds from colleges across India. Participants will tackle real-world problems through innovative software solutions, competing for prestigious awards and recognition in the tech community.",
     registrationFee: "$25",
     attendees: 250,

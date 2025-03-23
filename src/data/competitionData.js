@@ -8,7 +8,7 @@ export const competitions = [
       type: "Team",
       participants: 250,
       colleges: 15,
-      image: "/path/to/debate-image.jpg"
+      image: "https://raw.githubusercontent.com/Priti0308/pahal-public/main/IMG_9031.jpg"
     },
     {
       id: 2,
