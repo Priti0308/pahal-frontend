@@ -48,7 +48,7 @@ export const competitions = [
       type: "Individual",
       participants: 350,
       colleges: 18,
-      image: "/path/to/arts-image.jpg"
+      image: "https://raw.githubusercontent.com/Priti0308/pahal-public/main/IMG_8885.jpg"
     },
     {
       id: 6,
