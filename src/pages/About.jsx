@@ -6,8 +6,6 @@ const AboutUs = () => {
       {/* Hero Section */}
       <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
         <img 
-          // src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=2070&auto=format&fit=crop" 
-          // src="https://raw.githubusercontent.com/Mahesh-Langote/pahal-images/master/IMG_8887.JPG"
           src="https://raw.githubusercontent.com/Mahesh-Langote/pahal-images/master/IMG_9034.JPG"
           alt="Students participating in Pahal competition" 
           className="absolute w-full h-full object-cover"
@@ -39,7 +37,6 @@ const AboutUs = () => {
             </div>
             <div className="relative">
               <img 
-                // src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=2070&auto=format&fit=crop"
                 src="https://raw.githubusercontent.com/Mahesh-Langote/pahal-images/master/IMG_8858.JPG" 
                 alt="First Pahal competition in 2010" 
                 className="rounded-lg shadow-xl"

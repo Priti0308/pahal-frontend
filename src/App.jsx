@@ -7,7 +7,7 @@ import EventList from "./pages/EventList";
 import Gallery from "./pages/Gallary";
 import Home from "./pages/Home";
 import AboutUs from "./pages/About";
-import RegistrationForm from "./pages/RegistrationForm";
+// import RegistrationForm from "./pages/RegistrationForm";
 import Login from "./pages/Login"; 
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -16,7 +16,6 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AdminLayout from "./layouts/AdminLayout";
 import Dashboard from "./components/adminDashboard/Dashboard";
 import EventManagement from "./components/adminDashboard/EventManagement";
-import UserManagement from "./components/adminDashboard/UserManagement";
 import Settings from "./components/adminDashboard/Settings";
 import AdminEventList from "./components/adminDashboard/AdminEventList";
 import AdminEventDetails from "./components/adminDashboard/AdminEventDetails";
@@ -43,7 +42,7 @@ function App() {
               <Route path="/events" element={<EventList />} />
               <Route path="/about" element={<AboutUs />} />
               <Route path="/events/:id" element={<EventDetails />} />
-              <Route path="/register" element={<RegistrationForm />} />
+              {/* <Route path="/register" element={<RegistrationForm />} /> */}
               <Route path="/login" element={<Login />} />
 
               {/* Redirect /admin to /admin/dashboard */}
@@ -54,7 +53,7 @@ function App() {
                 <Route path="/admin/*" element={<AdminLayout />}>
                   <Route path="dashboard" element={<Dashboard />} />
                   <Route path="events" element={<EventManagement />} />
-                  <Route path="users" element={<UserManagement />} />
+                  
                   <Route path="create-event" element={<CreateEventForm />} />
                   <Route path="manage-events" element={<ManageEvents />} />
                   <Route path="events/:id" element={<EventDetails />} />

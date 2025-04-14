@@ -33,6 +33,7 @@ function EventDetails() {
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
   const [registrationData, setRegistrationData] = useState({
     eventId: "",
+    collegeName: "",
     teamName: "",
     teamLeader: {
       name: "",
@@ -158,6 +159,7 @@ function EventDetails() {
       );
 
       if (
+        !registrationData.collegeName ||
         !registrationData.teamName ||
         !registrationData.teamLeader.name ||
         !registrationData.teamLeader.email ||
@@ -442,7 +444,7 @@ function EventDetails() {
                     ></div>
                   </div>
                 </div>
-                // Replace the form tag with this version
+                
                 <form
                   onSubmit={(e) => {
                     // Prevent default form submission on all steps
@@ -463,6 +465,21 @@ function EventDetails() {
                       exit={{ opacity: 0, x: -20 }}
                       className="space-y-4"
                     >
+                      <div>
+                        <label className="block text-gray-700 text-sm font-semibold mb-2">
+                          College Name
+                        </label>
+                        <input
+                          type="text"
+                          value={registrationData.collegeName}
+                          onChange={(e) =>
+                            handleFormChange("collegeName", e.target.value)
+                          }
+                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+                          placeholder="Enter your team name"
+                          required
+                        />
+                      </div>
                       <div>
                         <label className="block text-gray-700 text-sm font-semibold mb-2">
                           Team Name
