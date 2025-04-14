@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://pahal-backend.vercel.app";
+const API_BASE_URL = "https://pahal-backend.vercel.app/api";
 
 export const apiService = {
   // Method to get the authentication token from localStorage
