@@ -476,7 +476,7 @@ function EventDetails() {
                             handleFormChange("collegeName", e.target.value)
                           }
                           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-                          placeholder="Enter your team name"
+                          placeholder="Enter your college name"
                           required
                         />
                       </div>
