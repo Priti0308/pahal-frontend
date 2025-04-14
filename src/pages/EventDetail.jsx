@@ -795,7 +795,10 @@ function EventDetails() {
                     {activeStep < 2 ? (
                       <button
                         type="button"
-                        onClick={nextStep}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          nextStep();
+                        }}
                         className="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition"
                         disabled={
                           (activeStep === 0 && !registrationData.teamName) ||
