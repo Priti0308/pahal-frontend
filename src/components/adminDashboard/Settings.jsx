@@ -87,7 +87,7 @@ const Settings = () => {
           <>
             <div className="flex items-center mb-6">
               <div className="w-16 h-16 rounded-full bg-blue-500 flex items-center justify-center text-white text-xl font-bold">
-                {adminData.username ? adminData.username.charAt(0).toUpperCase() : 'P'}
+                {adminData.username ? adminData.username.charAt(0).toUpperCase() : 'A'}
               </div>
               <div className="ml-4">
                 <p className="text-lg font-medium">{adminData.username}</p>

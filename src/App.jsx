@@ -11,6 +11,9 @@ import AboutUs from "./pages/About";
 import Login from "./pages/Login"; 
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
+// Remove Contact import
 
 // Admin Components
 import AdminLayout from "./layouts/AdminLayout";
@@ -44,7 +47,10 @@ function App() {
               <Route path="/events/:id" element={<EventDetails />} />
               {/* <Route path="/register" element={<RegistrationForm />} /> */}
               <Route path="/login" element={<Login />} />
-
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy-policy" element={<Privacy />} />
+              {/* Remove contact route */}
+              
               {/* Redirect /admin to /admin/dashboard */}
               <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
 
