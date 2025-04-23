@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../context/constants";
+import * as XLSX from 'xlsx';
 
 function AdminEventDetails() {
   const { eventId } = useParams();
@@ -34,7 +35,6 @@ function AdminEventDetails() {
     }));
   };
 
-  // Calculate statistics
   const getStats = () => {
     if (!eventData) return {};
     
@@ -65,6 +65,28 @@ function AdminEventDetails() {
     };
   };
 
+  const downloadAsCSV = () => {
+    if (!eventData?.participants) return;
+
+    const csvData = eventData.participants.map((team, index) => ({
+      'Sr No': index + 1,
+      'Team Name': team.teamName,
+      'Leader Name': team.teamLeader.name,
+      'Leader Email': team.teamLeader.email,
+      'Leader Phone': team.teamLeader.phone,
+      'Registration Date': new Date(team.registrationDate).toLocaleString(),
+      'Total Members': team.teamMembers.length,
+      'Member Details': team.teamMembers.map(m => 
+        `${m.name} (${m.email}) - ${m.college || 'No College'}`).join('; ')
+    }));
+
+    const ws = XLSX.utils.json_to_sheet(csvData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Participants");
+
+    XLSX.writeFile(wb, `${eventData.event.title}_Participants.xlsx`);
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex justify-center items-center">
@@ -90,8 +112,21 @@ function AdminEventDetails() {
     <div className="container mx-auto px-4 py-8">
       {/* Event Header */}
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg shadow-lg p-6 mb-8 text-white">
-        <h1 className="text-3xl font-bold">{eventData?.event?.title || "Event Details"}</h1>
-        <p className="text-xl mt-2">{eventData?.event?.date || "Date not specified"}</p>
+        <div className="flex justify-between items-center">
+          <div>
+            <h1 className="text-3xl font-bold">{eventData?.event?.title || "Event Details"}</h1>
+            <p className="text-xl mt-2">{eventData?.event?.date || "Date not specified"}</p>
+          </div>
+          <button
+            onClick={downloadAsCSV}
+            className="bg-white text-purple-600 hover:bg-gray-100 font-bold py-2 px-4 rounded flex items-center gap-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+            Export to Excel
+          </button>
+        </div>
       </div>
 
       {/* Statistics Cards */}
@@ -100,86 +135,58 @@ function AdminEventDetails() {
           <h3 className="text-gray-500 text-sm font-medium">TOTAL TEAMS</h3>
           <p className="text-3xl font-bold text-gray-700">{stats.totalTeams}</p>
         </div>
-        
         <div className="bg-white rounded-lg shadow p-6 border-l-4 border-green-500">
           <h3 className="text-gray-500 text-sm font-medium">TOTAL PARTICIPANTS</h3>
           <p className="text-3xl font-bold text-gray-700">{stats.totalMembers}</p>
         </div>
-       
-        
         <div className="bg-white rounded-lg shadow p-6 border-l-4 border-purple-500">
           <h3 className="text-gray-500 text-sm font-medium">LATEST REGISTRATION</h3>
           <p className="text-lg font-bold text-gray-700">{stats.latestRegistration}</p>
         </div>
       </div>
 
-      {/* Teams List */}
+      {/* Teams Table */}
       <div className="bg-white rounded-lg shadow overflow-hidden">
         <div className="px-6 py-4 border-b border-gray-200 bg-gray-50">
           <h2 className="text-xl font-bold text-gray-800">Registered Teams</h2>
         </div>
-        
-        
-        {/* Teams Table */}
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Team Name
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Team Leader
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Members
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Registration Date
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Actions
-                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Team Name</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Team Leader</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Members</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Registration Date</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {eventData?.participants?.map((team) => (
                 <React.Fragment key={team._id}>
                   <tr className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="font-medium text-gray-900">{team.teamName}</div>
-                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-900">{team.teamName}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-gray-900">{team.teamLeader.name}</div>
                       <div className="text-sm text-gray-500">{team.teamLeader.email}</div>
                       <div className="text-sm text-gray-500">{team.teamLeader.phone}</div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{team.teamMembers.length} member(s)</div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {new Date(team.registrationDate).toLocaleString()}
-                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{team.teamMembers.length} member(s)</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{new Date(team.registrationDate).toLocaleString()}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <div className="flex space-x-2">
-                        <button
-                          onClick={() => toggleTeamExpanded(team._id)}
-                          className="text-blue-600 hover:text-blue-900"
-                        >
-                          {expandedTeams[team._id] ? 'Hide Details' : 'Show Details'}
-                        </button>
-                       
-                      </div>
+                      <button
+                        onClick={() => toggleTeamExpanded(team._id)}
+                        className="text-blue-600 hover:text-blue-900"
+                      >
+                        {expandedTeams[team._id] ? 'Hide Details' : 'Show Details'}
+                      </button>
                     </td>
                   </tr>
-                  
-                  {/* Expanded Team Details */}
                   {expandedTeams[team._id] && (
                     <tr>
                       <td colSpan="5" className="px-6 py-4 bg-gray-50">
                         <div className="rounded-lg border border-gray-200 p-4">
                           <h4 className="font-medium text-lg mb-2">Team Members</h4>
-                          
                           {team.teamMembers.length === 0 ? (
                             <p className="text-gray-500 italic">No additional team members</p>
                           ) : (
@@ -202,11 +209,9 @@ function AdminEventDetails() {
             </tbody>
           </table>
         </div>
-        
-         
       </div>
     </div>
   );
 }
 
-export default AdminEventDetails; 
+export default AdminEventDetails;
