@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, useContext } from "react";
-
+import { BASE_URL } from "../context/constants";
 // Create Auth Context
 const AuthContext = createContext(null);
 
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
   // Login function
   const login = async (username, password) => {
     try {
-      const response = await fetch("https://pahal-backend.vercel.app/api/auth/login", {
+      const response = await fetch(`${BASE_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

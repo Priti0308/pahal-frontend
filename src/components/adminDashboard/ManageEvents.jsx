@@ -47,7 +47,7 @@ const ManageEvents = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/events/${eventId}`,
+        `${BASE_URL}/events/${eventId}`,
         {
           method: "DELETE",
         }
@@ -196,6 +196,13 @@ const ManageEvents = () => {
                               title="Edit event"
                             >
                               <Edit size={18} />
+                            </button>
+                            <button
+                              onClick={() => handleDelete(event._id)}
+                              className="text-red-600 hover:text-blue-900"
+                              title="Delete event"
+                            >
+                              <Trash2 size={18} />
                             </button>
                           </div>
                         </td>
