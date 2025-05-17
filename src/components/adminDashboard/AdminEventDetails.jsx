@@ -144,9 +144,9 @@ function AdminEventDetails() {
     if (!eventData?.participants) return [];
     
     switch (filterStatus) {
-      case "accepted":
-        return eventData.participants.filter(team => team.accepted);
       case "pending":
+        return eventData.participants.filter(team => team.accepted);
+      case "accepted ":
         return eventData.participants.filter(team => !team.accepted);
       default:
         return eventData.participants;
@@ -327,7 +327,7 @@ function AdminEventDetails() {
                                 : "bg-yellow-100 text-yellow-800"
                             }`}
                           >
-                            {team.accepted ? "Accepted" : "Pending"}
+                            {team.accepted ? "Pending" : "Accepted"}
                           </span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm">
