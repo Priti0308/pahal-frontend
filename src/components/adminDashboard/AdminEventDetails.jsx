@@ -180,17 +180,14 @@ function AdminEventDetails() {
                     <td className="px-6 py-4">{new Date(team.registrationDate).toLocaleString()}</td>
                     <td className="px-6 py-4">
                       <span
-                        className={`px-3 py-1 rounded-full text-xs font-medium ${
-                          team.status === "Accepted"
-                            ? "bg-green-100 text-green-800"
-                            : team.status === "Rejected"
-                            ? "bg-red-100 text-red-800"
-                            : "bg-yellow-100 text-yellow-800"
+                        className={`px-2 py-1 text-xs font-semibold rounded-full ${
+                          team.accepted ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
                         }`}
                       >
-                        {team.status || "Pending"}
+                        {team.accepted ? "Accepted" : "Pending"}
                       </span>
                     </td>
+
                     <td className="px-6 py-4 space-x-2">
                       <button
                         onClick={() => toggleTeamExpanded(team._id)}
