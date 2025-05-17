@@ -83,7 +83,7 @@ function AdminEventDetails() {
         "Leader Email": team.teamLeader.email,
         "Leader Phone": team.teamLeader.phone || "N/A",
         "Registration Date": new Date(team.registrationDate).toLocaleString(),
-        "Status": team.accepted ? "Accepted" : "Pending",
+        "Status": team.accepted ? "Pending" : "Accepted",
         "Total Members": team.teamMembers.length,
         "Member Details": team.teamMembers
           .map((m) => `${m.name} (${m.email}) - ${m.college || "N/A"}`)
