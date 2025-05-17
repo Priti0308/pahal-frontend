@@ -17,7 +17,7 @@ function AdminEventDetails() {
       try {
         setLoading(true);
         const response = await axios.get(
-          `${BASE_URL}/participants/${eventId}/participants`
+          `${BASE_URL}/participants/event/${eventId}`
         );
         setEventData(response.data);
       } catch (err) {
