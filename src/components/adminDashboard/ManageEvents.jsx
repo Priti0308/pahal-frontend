@@ -17,7 +17,7 @@ const ManageEvents = () => {
   const fetchEvents = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${BASE_URL}/events`);
+      const response = await fetch(`${BASE_URL}/events/all`);
       if (!response.ok) {
         throw new Error("Failed to fetch events");
       }
@@ -139,6 +139,9 @@ const ManageEvents = () => {
                       Location
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Status
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Actions
                     </th>
                   </tr>
@@ -180,6 +183,10 @@ const ManageEvents = () => {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {event.location}
+                        </td>
+                         
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {event.isActive ? "Active" : "Inactive"}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                           <div className="flex space-x-2">

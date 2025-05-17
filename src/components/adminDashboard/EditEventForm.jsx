@@ -9,6 +9,7 @@ const EditEventForm = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
+    isActive: '',
     title: '',
     emoji: '',
     teamSize: '',
@@ -327,6 +328,23 @@ const EditEventForm = () => {
               />
               <p className="text-xs text-gray-500 mt-1">Add a single emoji that represents your event theme</p>
             </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+            Event Status *
+            </label>
+            <select
+            name="isActive"
+            value={formData.isActive}
+            onChange={handleChange}
+            className="w-full p-2 border border-gray-300 rounded-md"
+            >
+            <option value="">Select Status</option>
+            <option value={true}>Active</option>
+            <option value={false}>Inactive</option>
+            </select>
+            <p className="text-xs text-gray-500 mt-1">Set whether the event is currently active or inactive</p>
+          </div>
+            <div> </div>
             
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
