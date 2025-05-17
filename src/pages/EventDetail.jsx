@@ -171,7 +171,7 @@ function EventDetails() {
 
       // Create a new entry with the form data
       const response = await fetch(
-        "https://pahal-backend.vercel.app/api/participants/register",
+        `${BASE_URL}/participants/register`,
         {
           method: "POST",
           headers: {
