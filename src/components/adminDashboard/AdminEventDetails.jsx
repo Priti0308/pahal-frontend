@@ -323,8 +323,8 @@ function AdminEventDetails() {
                           <span
                             className={`px-3 py-1 inline-flex text-xs font-semibold rounded-full ${
                               team.accepted 
-                                ? "bg-green-100 text-green-800" 
-                                : "bg-yellow-100 text-yellow-800"
+                                ? "bg-green-100 text-yellow-800" 
+                                : "bg-yellow-100 text-green-800"
                             }`}
                           >
                             {team.accepted ? "Pending" : "Accepted"}
@@ -338,7 +338,7 @@ function AdminEventDetails() {
                             >
                               {expandedTeams[team._id] ? "Hide" : "Details"}
                             </button>
-                            {!team.accepted && (
+                            {team.accepted && (
                               <button
                                 onClick={() => handleAcceptReject(team._id, "accept")}
                                 className="text-green-600 hover:text-green-800 transition duration-150"
@@ -346,7 +346,7 @@ function AdminEventDetails() {
                                 Accept
                               </button>
                             )}
-                            {team.accepted && (
+                            {!team.accepted && (
                               <button
                                 onClick={() => handleAcceptReject(team._id, "reject")}
                                 className="text-red-600 hover:text-red-800 transition duration-150"
