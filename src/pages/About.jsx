@@ -191,24 +191,23 @@ const AboutUs = () => {
             {[
               {
                 quote: "Participating in Pahal was a transformative experience. The challenges pushed me beyond my comfort zone, and the connections I made opened doors to incredible opportunities.",
-                name: "Aanya Patel",
-                college: "IIT Bombay",
+                name: "Mahesh Langote",
+                college: "ICEM College",
                 year: "2022 Participant",
-                image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop"
+                image: "https://media.licdn.com/dms/image/v2/D5603AQGyZxDmjsM_4g/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1671779421538?e=1752710400&v=beta&t=6VvlA5r3pKWQs97UahU14i2EvDzcsKkTr61Ve7_Zp5A"
               },
               {
                 quote: "The level of competition at Pahal is unmatched. It provides a perfect platform to benchmark your skills against the best minds in the country while learning and growing together.",
-                name: "Rahul Sharma",
-                college: "Delhi University",
+                name: "Abhijeet Kamble",
+                college: "RIT College",
                 year: "2021 Participant",
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop"
+                image: "https://media.licdn.com/dms/image/v2/D4D03AQH31OSs_A7Mpg/profile-displayphoto-shrink_800_800/B4DZa7egfLHEAc-/0/1746902059479?e=1752710400&v=beta&t=c3OVCOfvNFC-qcUHVSeGC9q3jR7tw_F4ZyzRHrNBpjo",
               },
-              {
-                quote: "What sets Pahal apart is how it simulates real-world challenges. The mentorship from industry experts and the collaborative environment prepared me for my career better than any classroom ever could.",
-                name: "Nikhita Reddy",
-                college: "BITS Pilani",
+              {quote: "What sets Pahal apart is how it simulates real-world challenges. The mentorship from industry experts and the collaborative environment prepared me for my career better than any classroom ever could.",
+                name: "Gayatri Patil",
+                college: "D.Y Patil College",
                 year: "2020 Participant",
-                image: "https://images.unsplash.com/photo-1619895862022-09114b41f16f?q=80&w=2070&auto=format&fit=crop"
+                image: "https://media.licdn.com/dms/image/v2/D5603AQEjugRWSuPlCg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1690021391704?e=1752710400&v=beta&t=VPX0yal5QjwJgITLZvclGOsr6lDIh0YlSjhqn4jU92s",
               }
             ].map((testimonial, index) => (
               <div key={index} className="bg-white p-8 rounded-lg shadow-sm relative">
