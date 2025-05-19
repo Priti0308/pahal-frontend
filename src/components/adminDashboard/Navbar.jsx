@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FaBars, FaTimes, FaUserCircle } from "react-icons/fa";
-import logo from "../../assets/logo.png"; // Ensure the path is correct
+import logo from "../../assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,13 +9,13 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-900 text-white px-6 py-4 shadow-md">
       <div className="flex justify-between items-center">
-        {/* Left - Logo */}
+      
         <div className="flex items-center space-x-3">
           <img src={logo} alt="Pahal Logo" className="h-10 w-10" />
           <h1 className="text-xl font-bold uppercase text-yellow-400">Pahal Admin</h1>
         </div>
 
-        {/* Center - Navigation Links (Desktop) */}
+      
         <ul className="hidden md:flex space-x-6">
           <li>
             <Link to="/admin/dashboard" className="hover:text-yellow-400 transition">

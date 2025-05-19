@@ -17,7 +17,7 @@ const ManageEvents = () => {
   const fetchEvents = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${BASE_URL}/events`);
+      const response = await fetch(`${BASE_URL}/events/all`);
       if (!response.ok) {
         throw new Error("Failed to fetch events");
       }
@@ -47,7 +47,7 @@ const ManageEvents = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/events/${eventId}`,
+        `${BASE_URL}/events/${eventId}`,
         {
           method: "DELETE",
         }
@@ -73,7 +73,7 @@ const ManageEvents = () => {
   );
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="max-w-9xl mx-auto p-6">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold text-gray-800">Manage Events</h1>
         <button
@@ -139,6 +139,9 @@ const ManageEvents = () => {
                       Location
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Status
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Actions
                     </th>
                   </tr>
@@ -181,6 +184,10 @@ const ManageEvents = () => {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {event.location}
                         </td>
+                         
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {event.isActive ? "Active" : "Inactive"}
+                        </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                           <div className="flex space-x-2">
                             <button
@@ -196,6 +203,13 @@ const ManageEvents = () => {
                               title="Edit event"
                             >
                               <Edit size={18} />
+                            </button>
+                            <button
+                              onClick={() => handleDelete(event._id)}
+                              className="text-red-600 hover:text-blue-900"
+                              title="Delete event"
+                            >
+                              <Trash2 size={18} />
                             </button>
                           </div>
                         </td>
