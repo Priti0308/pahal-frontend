@@ -286,7 +286,7 @@ function EventDetails() {
         <EventBanner event={event} />
       </div>
 
-      {/* Horizontal Sidebar */}
+      {/* Horizontal Sidebar
       <div className="sticky top-0 z-30 bg-white shadow-md rounded-lg mb-6">
         <div className="max-w-5xl mx-auto">
           <div className="flex overflow-x-auto py-3 px-2 scrollbar-hide">
@@ -313,7 +313,7 @@ function EventDetails() {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
