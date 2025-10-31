@@ -286,8 +286,6 @@ function EventDetails() {
         <EventBanner event={event} />
       </div>
 
-<<<<<<< HEAD
-=======
       {/* Horizontal Sidebar
       <div className="sticky top-0 z-30 bg-white shadow-md rounded-lg mb-6">
         <div className="max-w-5xl mx-auto">
@@ -317,7 +315,6 @@ function EventDetails() {
         </div>
       </div> */}
 
->>>>>>> 0330dea2138d4ec445726b4582e8639eb1dc9337
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Main Content - 2/3 Width on Medium Screens and Up */}
