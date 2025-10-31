@@ -286,35 +286,6 @@ function EventDetails() {
         <EventBanner event={event} />
       </div>
 
-      {/* Horizontal Sidebar */}
-      <div className="sticky top-0 z-30 bg-white shadow-md rounded-lg mb-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex overflow-x-auto py-3 px-2 scrollbar-hide">
-            {sections.map((section) => (
-              <button
-                key={section.id}
-                onClick={() => scrollToSection(section.id)}
-                className={`flex items-center px-4 py-2 mx-1 rounded-lg whitespace-nowrap transition-all duration-200 ${
-                  activeSection === section.id
-                    ? "bg-black text-white font-medium"
-                    : "hover:bg-gray-100"
-                }`}
-              >
-                <span className="mr-2">{section.icon}</span>
-                <span>{section.label}</span>
-              </button>
-            ))}
-            <button
-              onClick={handleRegistrationClick}
-              className="flex items-center px-4 py-2 mx-1 rounded-lg whitespace-nowrap bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium hover:opacity-90 transition-opacity ml-auto"
-            >
-              <Clipboard size={16} className="mr-2" />
-              <span>Register Now</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Main Content - 2/3 Width on Medium Screens and Up */}
