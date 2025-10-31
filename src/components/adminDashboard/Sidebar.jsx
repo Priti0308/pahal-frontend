@@ -7,7 +7,7 @@ import {
   FaCog,
   FaTachometerAlt,
 } from "react-icons/fa";
-import logo from "../../assets/logo.png"; // Ensure the path is correct
+import logo from "../../assets/logo.png"; 
 
 const Sidebar = () => {
   const location = useLocation();
@@ -19,7 +19,6 @@ const Sidebar = () => {
         isOpen ? "w-64" : "w-20"
       } min-h-screen p-4 transition-all duration-300 flex flex-col shadow-lg`}
     >
-      {/* Sidebar Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="text-white mb-4 focus:outline-none self-end hover:text-yellow-400 transition"
@@ -27,7 +26,6 @@ const Sidebar = () => {
         <FaBars size={24} />
       </button>
 
-      {/* Logo Section */}
       <div className="flex items-center mb-8">
         <img
           src={logo}
@@ -41,7 +39,6 @@ const Sidebar = () => {
         )}
       </div>
 
-      {/* Navigation Links */}
       <ul className="space-y-4">
         <li
           className={`${
@@ -83,6 +80,7 @@ const Sidebar = () => {
             {isOpen && "View Participants"}
           </Link>
         </li>
+        
 
         <li
           className={`${
@@ -99,7 +97,7 @@ const Sidebar = () => {
         </li>
       </ul>
 
-      {/* Footer */}
+
       <div className={`mt-auto text-center ${isOpen ? "text-sm" : "hidden"}`}>
         <p className="text-gray-400">© 2025 Pahal Event</p>
       </div>

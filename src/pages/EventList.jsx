@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import apiService from "../../src/context/apiService";
+// import apiService from "../../src/context/apiService";
+import apiservice from "../../src/context/apiService";
 import { BASE_URL } from "../context/constants";
 function EventList() {
   const navigate = useNavigate();
@@ -64,7 +65,7 @@ function EventList() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {events.map((event) => (
             <div
-              key={event.id}
+              key={event._id}
               className="flex flex-col bg-white rounded-lg overflow-hidden shadow-md"
             >
               {/* Event Image */}
